@@ -6,8 +6,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
       "Rich Dad poor Dad",
     "Robert Kiyosaki",
     1000,
-    "ok"
+    "okkk"
     )];
+
+    let button = document.createElement('button')
+        // button.addEventListener('click', ClearContent)
+        // button = document.getElementsByClassName('book')
+        button.innerHTML = '<button>Remove</button>'
+        document.body.appendChild(button)
+
 
     // initialises the display to denote content of the library
     displayLibrary()
@@ -50,15 +57,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
         <div class="book">
         <h2 class="book-title">${book.title}</h2>
         <h3 class="book-author"> By: ${book.author}</h3>
-        <h4 class="book-page">Number of pages ${book.pages}</h4>
-        <h4>${book.isRead? "Read" : "Not Read"}</h4>
+        <h4 class="book-page">Number of pages: (${book.pages})</h4>
+        <h4>${(book.isRead)? "Read" : "Not Read"}</h4>
+       
         </div>`
       });
 
       // add the content as inner Html for the book container
       bookContainer.innerHTML=content;
+
       }
+      
     }
+
+    
 
     /* adds Book to the Library */
     function addBook(){
@@ -86,6 +98,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
     }
+  
+
+
+
 
    // Add an event listener to the add-book button
     document.getElementById('add-book').onclick = toggleIt;

@@ -48,27 +48,38 @@ h2  {
 }
 
 .book{
-    background-color: rgb(214, 16, 16);
-    width: 200px;
-    height: 250px;
+    /* background-color: rgb(214, 16, 16); */
+    background-image: url('../Images/book_web.jpg');
+    mask-border-repeat: none;
+    width: 250px;
+    height: 367px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 1rem;
     display: flex;
     flex-flow:column wrap;
     justify-content: flex-start;
     align-items: center;
-    padding:0.5rem;
+    padding:1rem;
+    margin-top: 40px;
 }
+
+.book h2, h3, h4{
+    padding-top: 12px;
+}
+
+
 .book-title{
   font-family: cursive;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 200;
   text-align: center;
   color:rgb(159, 197, 159);
 
 }
 .book-author{
   color:white;
+
+  font-size: 70%;
 }
 
 
