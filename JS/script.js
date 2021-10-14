@@ -9,13 +9,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     "okkk"
     )];
 
-    let button = document.createElement('button')
-        // button.addEventListener('click', ClearContent)
-        // button = document.getElementsByClassName('book')
-        button.innerHTML = '<button>Remove</button>'
-        document.body.appendChild(button)
-
-
     // initialises the display to denote content of the library
     displayLibrary()
 
@@ -30,8 +23,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById("cancel").onclick=toggleIt;
 
     /* Book class to make new Book object */
-    function Book(title, author, pages, isRead){  
-        return {title, author, pages, isRead}
+    function Book(title, author, pages, read){ 
+      var data = {value: read? true : false};
+      const isRead =function (){
+        return data["value"]
+      }
+      const  readBook = () =>{
+        data=Object.assign(data,{value:!data.value});   
+      }
+        return {title, author, pages, isRead,readBook}
     }
 
     /* clear the book form */
@@ -39,6 +39,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
       document.getElementById("author").value="";
       document.getElementById("title").value="";
       document.getElementById("pages").value="";
+    }
+
+    // toggle the read property of book to either read or 
+    // not read
+    function readBook(id){
+      library[id].readBook();
+      displayLibrary();
+      console.log(library[id].isRead())
+    }
+
+    function removeBook(id){
+      let book = library[id];
+      let del = confirm(`delete\n ${book.title}?`);
+      if(del){
+       library.pop(book);
+       displayLibrary();
+      }
     }
 
     function displayLibrary(){
@@ -51,15 +68,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let content='';
         
         // loops over the library to process the 
-        // the content of each book
-      library.forEach((book) =>{
+        // the content of each book 
+        // Note: the index (id) of the book is the second argument
+        // we have from the forEach function
+      library.forEach((book,id) =>{
         content+=`
         <div class="book">
         <h2 class="book-title">${book.title}</h2>
         <h3 class="book-author"> By: ${book.author}</h3>
         <h4 class="book-page">Number of pages: (${book.pages})</h4>
-        <h4>${(book.isRead)? "Read" : "Not Read"}</h4>
-       
+        <h4 class="book-read">${(book.isRead())? "Read" : "Not Read"}</h4>
+        <div class="slider">
+        <div data-name="readit" class=${book.isRead()? "slider-icon-read" : "slider-icon"}  data-id=${id}> </div>
+        </div>
+        <input class="remove" type="button" data-name="remove" data-id=${id} value= "remove book">
         </div>`
       });
 
@@ -69,6 +91,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
       
     }
+
+    /* Add click event listener to the document, but this
+     * is just to target either the "remove book" button or
+     * the "read icon" button"
+     */
+    document.addEventListener('click',(evt)=>{
+      // get the dataset attribute which was set only for
+      // the two buttons we want to target
+
+      const data = evt.target.dataset;
+      if(!data.name) return;  // other element has been clicked
+
+      // at this point we are sure that either the remove button
+      // or the read button has been clicked
+
+      if(data.name==="readit"){   // read button was clicked
+
+        // call the readBook function passing the index of the 
+        // book in the library
+        readBook(parseInt(data.id));
+      }
+      else if(data.name==="remove"){  // remove button was clicked
+
+        // call the remove function passing the index of the 
+        // book in the library
+        removeBook(parseInt(data.id));
+      }
+    })
 
     
 

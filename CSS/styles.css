@@ -37,10 +37,9 @@ h2  {
     display: flex;
     gap:0.5rem;
     flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content:left;
+    align-items: flex;
     min-width: 100%;
-    
     margin-top: 1rem;
     min-height: 50vh;
 
@@ -52,7 +51,6 @@ h2  {
     background-image: url('../Images/book_web.jpg');
     mask-border-repeat: none;
     width: 250px;
-    height: 367px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 1rem;
     display: flex;
@@ -82,6 +80,14 @@ h2  {
   font-size: 70%;
 }
 
+.book-read{
+  color:chartreuse;
+}
+
+.book-page{
+  color:cyan;
+}
+
 
 .toggle{
     display: flex;
@@ -107,6 +113,42 @@ h2  {
 #cancel{
   background:red;
   color:white;
+}
+
+.slider{
+  margin-top: 1rem;
+  display:inline-block;
+  width:4rem;
+  background: gray;
+  height:1rem;
+  border-radius: 0.5rem;
+  display:flex;
+  align-items: center;
+  position:relative;
+}
+.slider-icon{
+  height:1.5rem;
+  width:1.5rem;
+  background:yellow;
+  position: absolute;
+  box-shadow:0 0 1px 1px white;
+  border-radius: 50%;
+}
+.slider-icon-read{
+  position: absolute;
+  height:1.5rem;
+  width:1.5rem;
+  right:0;
+  background: green;
+  border-radius: 50%;
+}
+
+.remove{
+  background:red;
+  color:white;
+  margin-top:1rem;
+  padding:0.5rem;
+border-radius:0.5rem;
 }
 
 
