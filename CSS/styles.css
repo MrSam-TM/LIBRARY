@@ -51,6 +51,7 @@ h2  {
     background-image: url('../Images/book_web.jpg');
     mask-border-repeat: none;
     width: 250px;
+    height:350px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 1rem;
     display: flex;

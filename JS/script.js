@@ -2,11 +2,11 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   
     //Book Library
-    const library =[Book(
+    var library =[Book(
       "Rich Dad poor Dad",
     "Robert Kiyosaki",
     1000,
-    
+
     )];
 
     // initialises the display to denote content of the library
@@ -46,14 +46,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     function readBook(id){
       library[id].readBook();
       displayLibrary();
-      console.log(library[id].isRead())
     }
 
     function removeBook(id){
       let book = library[id];
       let del = confirm(`delete\n ${book.title}?`);
       if(del){
-       library.pop(book);
+       let lib1=library.slice(0,id)
+       let lib2=library.slice(id+1,library.length)
+       library=[...lib1, ...lib2]
        displayLibrary();
       }
     }
