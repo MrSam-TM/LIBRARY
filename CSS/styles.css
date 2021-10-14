@@ -81,7 +81,10 @@ h2  {
 }
 
 .book-read{
-  color:chartreuse;
+  color:rgba(63, 211, 26, 0.459);
+  font-weight: bolder;
+  font-size: larger;
+  text-transform: uppercase;
 }
 
 .book-page{

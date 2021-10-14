@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       "Rich Dad poor Dad",
     "Robert Kiyosaki",
     1000,
-    "okkk"
+    
     )];
 
     // initialises the display to denote content of the library
